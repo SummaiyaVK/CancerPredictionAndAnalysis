@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<head>
+    <style>
+body {
+    background-color: #b3b3ff;
+    }
+    h {
+    font-size: 20px;
+    }
+
+    d {
+position: fixed;
+padding-top: 350px;
+}
+
+    </style>
+<title>Cancer Prediction and Analysis</title>
+<script type="text/javascript">
+function displayo()
+{
+var ochbox=document.getElementsByName("sympo");
+var och="";
+    for (var i=0; i<ochbox.length; i++) {
+        if(ochbox[i].type=='checkbox' && ochbox[i].checked==true)
+		{
+			och+=ochbox[i].value+" ";
+		}
+    }
+//alert(och);
+}
+</script>
+</head>
+<body>
+<br>
+<h>
+    Please check the boxes according to your symptoms.<br><br>
+<form action="http://localhost:5000/cporaleval" method="get">
+<input type="checkbox" name="sympo1" id="sympo1" value="teethloss">Teeth loss<br>
+<input type="checkbox" name="sympo2" id="sympo2" value="trachealobstruction">Tracheal obstruction<br>
+<input type="checkbox" name="sympo3" id="sympo3" value="persistentneckpain">Persistent neck pain<br>
+<input type="checkbox" name="sympo4" id="sympo4" value="lumpinneck">Lump in neck<br>
+<input type="checkbox" name="sympo5" id="sympo5" value="numbnessintheface">Numbness in the face<br><br>
+<input type="submit" value="Submit" onclick="displayo()"><br>
+</form>
+    <br>
+
+    <d><a href="mainpg">Back to main page!</a> </d>
+
+</h>
+<br>
+
+
+<!--{{result2}}-->
+
+
+</body>
+</html>

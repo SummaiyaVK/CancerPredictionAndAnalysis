@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <style>
+body {
+    background-color: #b3b3ff;
+    }
+
+h {
+    font-size: 20px;
+}
+
+d {
+position: fixed;
+padding-top: 350px;
+}
+    </style>
+<title>Cancer Prediction and Analysis</title>
+<script type="text/javascript">
+function displayl()
+{
+var lchbox=document.getElementsByName("sympl");
+var lch="";
+    for (var i=0; i<lchbox.length; i++) {
+        if(lchbox[i].type=='checkbox' && lchbox[i].checked==true)
+		{
+			lch+=lchbox[i].value+" ";
+		}
+    }
+//alert(lch);
+}
+</script>
+<body>
+<h><br>
+    Please check the boxes according to your symptoms.<br><br>
+<form action="http://localhost:5000/cplungeval" method="get">
+<input type="checkbox" name="sympl1" id="sympl1" value="lumpinneck/collarbone">Lump in neck/collar bone<br>
+<input type="checkbox" name="sympl2" id="sympl2" value="muscleweakness">Muscle weakness<br>
+<input type="checkbox" name="sympl3" id="sympl3" value="trachealobstruction">tracheal obstruction<br>
+<input type="checkbox" name="sympl4" id="sympl4" value="sweatingonlyononesideoftheface">Sweating only on one side of the face<br>
+<input type="checkbox" name="sympl5" id="sympl5" value="fingerclubbing">Finger clubbing<br><br>
+<input type="submit" value="Submit" onclick="displayl()"><br>
+</form>
+    <br>
+    <d><a href="mainpg">Back to main page!</a> </d>
+</h>
+<br>
+
+
+<!--{{result}}-->
+
+
+
+</body>
+</html>

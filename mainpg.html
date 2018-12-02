@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+body {
+    background-color: #b3b3ff;
+    background-image: url("img_tree.png");
+    background-repeat: no-repeat;
+    background-position: right top;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #009973;
+}
+
+h{
+font-size: 18px;
+}
+
+dif {
+    height: 10px;
+    background-color: powderblue;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #5c8a8a;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+.crop {
+    width: 300px;
+    height: 200px;
+    float: right;
+    overflow: hidden;
+
+}
+
+.crop img {
+    width: 400px;
+    height: 405px;
+    margin: -25px 0 0 -150px;
+}
+
+aside {
+    padding: 1em;
+}
+
+p {
+    text-align: left;
+    margin-right: 170px;
+}
+
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 500px;
+  position: relative;
+  margin: auto;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #ffffff;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+    </style>
+
+    <meta charset="UTF-8">
+    <title>Know The Cancer</title>
+
+</head>
+<body>
+<h1 style="color:black;text-align:center;">Know the Cancer!</h1>
+<br>
+
+<ul>
+<li><a class="active" href="{{ url_for('mainpg') }}">Home</a></li>
+<li><a href="index">About</a></li>
+<li><a href="cp">Take a test!</a></li>
+</ul>
+<br>
+<h>
+<br>
+
+    <div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 5</div>
+  <img src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/signs_you_might_have_lung_cancer_slideshow/493ss_thinkstock_rf_lung_cancer_illustration.jpg" style="width:100%">
+  <div class="text">Lung Cancer</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 5</div>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW9rDVOFw1inIIWpk3dUyYypXIvQCL-dUyO-o3j8HFvJevxq7P1A" style="width:120%">
+  <div class="text">Lung Cancer</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 5</div>
+  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuZWhfxy_86xXMMWRD9SnmQ-pWRDnNDGOIVjWHw6hSC7jhRC2Hdw" style="width:120%">
+  <div class="text">Stomach Cancer</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">4 / 5</div>
+  <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxMTEhUSExIVFRUWFhUXFhgXFRIVFRUXFxUWFxUXFRcYHSggGBolGxUVITEhJSkrLi4uFx8zODMtNygtLisBCgoKDg0OGhAQGy0lHx0tLS0tLS0tLS0tLS0tLS0rLS0tLS0tLS0tLS0tLS0tLS0tKy0tLS0tLS0tLS0tLS0tN//AABEIALcBEwMBIgACEQEDEQH/xAAbAAACAgMBAAAAAAAAAAAAAAAEBQMGAAECB//EADgQAAEDAwIEBAQGAAUFAAAAAAEAAhEDBCESMQVBUWEicYGRBhMUoTJCscHR8CNSkuHxBxYzYsL/xAAaAQADAQEBAQAAAAAAAAAAAAABAgMABAUG/8QAJREAAgICAgIDAAIDAAAAAAAAAAECEQMhEjFBUQQTImFxFDJi/9oADAMBAAIRAxEAPwBY2kAsDEVToz7ruowRlch9CuwWI5rh08ls4K5JlAvRjjGy6YVrHmtFywyZNrWw9QalvUsbQQ16mZWQcrvUsbQ4tHycp1RqAR39R6wq7ZvzvBOx7pnRcJwSHfmHIxtHJURy5KsfMqNGS3P2I/T7LVSpjz22QNF5mJieW4XD3RO/KNoTEElZNUqErbNkJqK19RmECyfoJLJOy0/bpG6jbcDr7qX6hpGUo3JmU6wG+V0+6A5eq3Soh+0YWVaA2W2ByjeyJteSpHVe4Q1F8EiNltrcycLbHtWMWXBjfHT/AGRQvQRlkDty/X9EpNbusNwZicI2TeOw2tE+Az6wfsUI4xuCJ6if4XOodZ9lA+5cMjV2kz9kLHjB9HT2zJBDjyEwR6GMoOqXTpM+RkZU76gI8QB8se4W9QI3/wBR2/vkiZ/kGeZAIx1/kKSheubnWcbKGrtvHkZH2S+qfNGxfr5aCby+a4+MT3nKnpV7fSJeY7MIcPWc+qS1WmP6VAKZA791rY30KqsY/WkHG04OEXbXrHYJVfeShyOcpB/qstxLViqQr1P8x91iFg+p+xjQqOJhS1JUvDbfd3RTVKEosza5AJpdly6nCLOJQtQknZYybZw6EOQpHOUD3oUOnRtyzUoy9YHLIzkS6lgrKL5iHqP6JqJ8h9ZvEFp/CSM82uzB8t1K+uWnS7cY/jPRVq1vTq0xviOo8+o39ERU4gY0k5bI9AZEnt+6ejn5NstFtezALpj+5TW2qtc6PwyBBMls9zCpfArxpDnP/CHM1HJIaZ1QB6fZTcW464sAYCGAwJ5nrPWCmSJztukXN9iTlpDpnLXDlugjpB8TtJ5B0/r+6q9lVrlmsF0DOJx3xst0qT6jmskgvgN5bnaSm4qhFyXkfVLprTGpp54cD/fJHW1rUc0OY3WD0LeXqqw/4RuRVDWOY8k8ntPuJlWLhto+3eabyHnE6HEFp5SZAHql4lJTSX5lZE+5IkZBG4OCExsuInYw4d9/dQ3VO3qt0muG1248RkHsXNkD1SG+pVrcw9pHQ7gjsdilcWhlkjNU9Mt1anSdlp0k7zt6RugXWT2HLSQdjn3Cr9pxdpwcEf3ZMaPGXgYdLR7LdhSlHphYrEGSNu2VI+qHEcu8FDVeIsfGM88BaDensZWoym+2GaByP7ISpIUVWudjv5BZTv530mNgcf30KDRWGRnZiMfyoHVSP91JUuGyZYR94PY4j7rl9WmfzOA/1D12KFFFKwc1Wjff+9VlcMcJ1gHpDgfeIUV3Tpx4XGfMFvfkCEoq1CNjKF0VjDltBbgcwQfVC1J6/cIU3LtltryUvIt9bR26rO67DZ6LQtpXTKJBS8gNI19P5LaKDVpbkSsb21L9VNVwFuNitOZM5TI53t2wR7ZHRQ1GwjHtxCFrhEItrNkyhKrUXcOhKbi+iQiPZovypGvCW1LnoovrY3QQsmM61Xulte5giCh6tzKip1JeJGIA9gAT+vunOdtroK+tiHTBBxhR1ajiTMgnPvO3VccQtdABblj4gyDmM+WZQdIEFFoEZJux3w25DWPYfzD2Mg//ACE0t79lWmWVPxiA07YaIAjrgKskwQUSwhwkoplJY12P7HjdW2cNBmDMQCCO6au+JqdVwf8AncZe0ghs4kCOR/ZU+pR2a10u5LPnFhBIhw5jef5TcmibxRe/I14o06zVY7QSZhp2nljYplwis+m3W95br8IeZJzBLh1x5bjMSkdTibqukOaABDQRJPn3KsjrRjajKZZTOstJDnanAECA57IAk5LRtG63b0LKTS4sKubSm6k+rQe+q5r9MRAyTDnmM7bLOHPuqQAr0nGi78TSIaRMcxj0youP0q1F0UoYwgGKTflhw3Bic+e5RXCOK3dRh1kOp0xtUI/FsIByTnyTo5pN8b7K7xyzDHfMpnwPcdInLcnB9t0Pb8RIODjI9kRxK0qsYW1GgEVAWkOBkumRgkcpSAVDJU5aZ1YXyVMtdK9lT0eJubvskFoSdkzt6bnAkiYWSsq0l2PG3Tag3yg7ugYKBdLchH297IhyFA41tCtrntOCY9UbTuiQiX0AduaDfbEHCDqh4TvRoulRupko2hZ5ypzb8lBs6lkSE30uUZQtEwpWfZGNtlOzTzig0eS0aPVOvpYQ9Sh0QdiLJYs1FYmH0hWIbNyQx0rmoY5YUtQwoapK6OiSQM9yEuXoi4dhL7p8rDqNi2/eq7c1N05v3YSSoyShYzjoX1HFcfMKnqsUIanRzyszXsp61KGgnY7dly2jK6+QTicI2Kk6I2uccTgey2Gk5WVaBaFLYNkEnkUbFiqezHVvDkIZs9UbWY4nEAHocDpMrt1rS0Eud4hybB9z/ErJFfsoFfmJOV1Uq4Anqu2NYDs5wjmAP3XL6LXGGtcO8h0+eAshZSImNP5ZKb2IuCA5ogNI8RcGAT3JCAFs9mdxzj9+i266necbDoj0MlyLdb/EmlhZU8U4lmkEDpqIJ/b9iLa+pV5otJpaj4XPgjcQHlo+/JVqlxO2+To+nPzNQPzNf5eY0nn/AAE9bXszT1UqdRtQgSC4GmOpB3VIzOXLhS3TF3Ga1wJpVHSGHEHBjY4weed8pcaIjuRKaVqwNMM0iQT4pkkGcFC0LeXCUsuxsT4kHD3+IA9YV2sbVrgIqsHXfE8u6qVxaAOkIu0quBCMdFcn6Wmei3Hwg91Br2Q7GwiT3wq87hJb+KBB54KZfDvxDUpbOxzB2TLj/F6NYhzWw6BO0fZPo4VPLF0V+nbRPRc02eJGNGpS0rKfNQyL0dMJ+yFltzU7KKmpQMHfkpPfG/VQaH5NkRprdNhlbdVCynUhLQ6TokdSkKN1BStUonmibaIRarFPJWLC/oXE5UNbK7cZ3ULxuqHRQHVCAuEW87oC4cSiG2K7sJZVbCbXJjAGfulNaotRnMErBQ0WZXdV0qS3blEi3bCqVBb+TBRNBsqR1OUhQX3VKRCDthG+45J46ilt5Q0HVynPbv8A3qmTJtCy4acTspKNLI5rus4O29FzUaWHsmsZRLXwrg9EU/qa7XupA6YZGXkGG7zGOSB4vdO8B+Qyk3TgCnpMZglxy490Vw74gaLV1s4Atc4PnZwcNs+/un11xGzfZO1l7qgptYxmrAdzqSBuFTTRzNSUrkr2VLglvTrVA11b5UneJzyx0XfEeGFhLKmipBgOYRPWcYO6Uhj2GR6FSvv3keXZJa8nTwbdp6Gdr8K1agLqQJH/ALAtjzOyItOA1tRa9wbEzJnblAlHfDnxNeU2aGVHBvT+OifUON1CXuedT3jS4kAmMYHTYJ0o1ZzZJ5brRWH2uY5DCko20Smxt9WVp1PSkswsNDquQyDsmph2yDrthFSGim2apGCpm3IG5Sm4uSEsddulB5Dsx/F5bZdaHED+VFC/qO/Mqvb1zpB3TXh9acyhbZn8eMd0NNbiZLjKnYD13UOhdukBLxFSQTTA6ohgHJLKNN5MyAEdRoF2PuErSXYzil5DremXGApQIwREKGz4c4buTH6eRBz5oKUSE5RT7BZWLRtKnLb0WI6N+fYpqsICGrPTO7bugDSzlErF2gJ1LCALcmQm1UckHUYjYGV3iT9JBG4ykNWpJJPNOuOtIKrtRyZIjkdE9GnMlTUm5UVqES9uxC0hMbDrYI4BLqL8I2nUnCkdPZJAUb6GoRCKpUJR9O2ACKFdIq1bgY3bhLbuze3fZX2pTbEn7IKrQ1D8GOXPC3I0X5KQy3KnZSJIAmFZhZUz+WFJS4cwdEy2aWVglva6h4gIWHhlMGZ/RNfoWrDagKjZzxu+wKhQ/wAogI+hThbaAOaJZTxKlKZ0qJPTOFFXIWw+ORUbqoTKSYjxg9OQVlQA7rprpmFLY2vzKgbyGXbbLN0jaRFQ4AKokgifdd/9lAGQ73V0tbcRgQEWKCj2xP8AMyR6ZQbnhGgRpwFFZ20FXy7sg5pBCrdS20OgqkX4ZbFn5qn2MLG08OoifVFXlt/hgBomemTPdR29zTaABtzJ/hC3XEPnVGsaYbOSPLZUk0kQSnKX9GW9AuO0AJ1bW0BcWlvAATFjVySdvYuTLZqnTUwpqSm1S6U0UczmD6FiJ0LE9Ccys0KOp2T9pyl90zSYTJ1aMhAXbtSZ9HpQu/4Anc0FdYCOqtjdLr3ZApRV+OVJwq1V/FCecTdkpA4+JPFnP8jTQ2twA0KVsnCht8hM6FuQQhJi40cMt4CN4ZT6qeiwHCIpUw0pDob8BNNoGVulcAktIwoH1QF1GkdzlJOVIyjYwc8RAG6mpcJOkODwBEwcegQNkC8jsrJbU4CjFtvZPJJw0hBccIcWk8+wz7hIfmOY7S8EdDGPXovQxTQ13w8OG3unXJbFh8hdSRURUXNSsDumN7wvSCW7cx08klrNhWjkUkUik3oY8NbrJgbKw29lO6S/C9Mlpd1cfsrTTowotWyWaVOgGtYSMJJf2ZaraZAS+9yI/ZGUlEGPLKyi07ogwSrn8MWXg1kZdn05KuV+ENfcNYx25GofmaN3Hy3+y9DsaQDQ0DAwE32c0V+TNVryE0aSnDF3TprsNTpHmuRDUYk/FLPUCRvBT2FzVoSEXFvoaGTg7PO6UB/iO3Lr2THgLQ5zngACcKfi3BYJc0bqbgVroZHcn7qDm7pnqZMsJY7T2x1SRTAhqARjAt2ecyVgXa01dKiJM3K0twsVBNFVuaZQLsJvcAndLqzUGevF6B64wkd8/dOLhyQ8WqhoPkgxolN4zXgpHTqZRnEbvJGEqY/KtFaOLPkuZbeEtBglNXOHJJuGSWgAcsp1a2ZMLnyvZ04VqwhpnKI0mJUzbUwcclttJwUo5GPKgSgNTx5phUoyo+HWX+IT1Tt1tjZTyNtm5pUDcFoD+9lY6TEn4UyDHdPYVsKtWcnyH+jGsyt1GKWg2Tup/kAj8Q2kjbPTuulR0cblsrV4zKqnG7Yz4BvyVzvWiUsfZ6nDzXC+UXo78M0tkvw3Z6abGnkM+e5+6sLKYQ1jSgI9oXRjWjmyzt2QPpSgLm3TnTjZQ16ONkZ4+QsclCPh3DgKjqsZIDfQb/3srHbU0La04TKkEIQobLNslAW2sRtpTG52AUUZXRxOXkcfTGcLkU5nIHmUXUuMQMDn1Si+uAMStKSgrNFOToHvCIQls1dk6lqm3SYK43bdnXHSoLotyjWtQ9JqNptVIonORoNUgYiNAbHNRl2ZVVGuyLlZMLQ9liDddCfxfdYj9kAcJCOqxLrhsJrTqDM+iUXjslK0etBu6EvEakFVH4jvMRKsHF6uCVQuP3eI5lLFWx8k+MRFVcXFQwto7hFr82sxp2Jz5BdPSPLf6ZcPh6zcKTXERIVl4ZS8JK5p0vBAC6tCvOm9/wBnoxf5r0MWUguXsRNIYW/lzKdR0c7nsi4dRl0p3Ts55IDhNOHQrK0QE2LHe2JlyV0IzYOY447/AMqdlZuJKNr3XZK6tPWcAewCauHQFJy/2C6lwBsRHYhAV7w8io6lCOSXPaZicKWTJJIpDHFhH1WpS2p8SFbQU1JhBSQk32PKKXQ5tCj2NwltsTiU1orrxo5cgTSALNGxmeeQuL5w0hnTPYdlw94A3S28vQ3d0dhkp5SUVslGDkzb6oaco+0rB2xlV12onaJ67om3t3AyHR3C5o5OUtI6ZY/ztlqZso6tUNEoG2NZ0NDp9BsheI0X5kz32x5Lqb0cyhvs3d8YaMap8s/oltZz6jgdgPdDC18QnqmluOXT+hcM1Kb/AEdkeMFo1SaUwoWoePJRtpTlGWmCrY4+GQnPyjhlMtwUXROQpXiW+qS8e45Ts6fzKkmTpAEaie3oqOPFk+XJDt79yq58TfEbKDS0OGvzwO5VP4//ANS9TC23YWuP5nRjyA5rzW8un1HFz3FziZJJmUzVj44pO5FvuPihxcT8478nLFR5WIfXH0d3+V/yj3itcQld3WwVLXqJZdvSNllFIr/GLmAvPr+41PJ3Vo+JrrJaFUKtTYAQRIJ6qsEcfyJbo5Jk4EJ18KAfUMnulVKi6JDZEx6o/hltUa9rg04IKeVNUc0U7tHr1KiNGyA0aXzyUlLirNA6pXe3RdsueUInRBystFq4EYU34QqJQu61Myw+hyD6JjQ4xWd/5GiO0hZNBlikWG2v2tqbgT7BWEcWZGQT5bKmtax0ZGdshLb1jmZBO8YOJ3RVxEcIy0Xivfatm/dQC+Dd2/uqxYcXqEQC31CNtLn5hgnI5fwi2Diloa1OINdKFjUZCIp0QBPNQsByeYPuEk4N9jwkl0G0qeF22jlcU68wfQo2kkUVZpNk9Bhhaq2/OT2glF24EKR7V0qNo5eWxJc2zy2dR8p3Q9tbNgyU7hVG54+1tdwAHy5iRzPM+SlKHll4Tb0h/bN1b7wiqTIQdncNd4muBB6JxRoasoRj6BN0d0hGVl+8RPRsH0UnyyFVfjzi4bT+nYQHuHij8rf5Ku+tkI7lor9H4p/xXax/hlx0kDLWzjzVqtLtrgHtcHA9F5f8l3RdWt/Uoulji08+h8xzU3D0dP8AZ7NbkHZG06a864P8bsECs0t6ubke24+6fVPju0aMOc89GtP7wjD+SE4PwWa8vG0mOe8gNAJJPIBeH/FvG3XdYvyGNkU29B1Pcpp8U/FNS78I8FIbNnJ7uPPyVbLQnY2OFbYuqNQrwmNdBPCxQHgrSm0rFjHr1dLLypDSUfXqYSDitxiFJI72yocVovqVDpEkrLH4b/NUz2VitrWM890ZzVEyDim7ALXhzWgACOmFu4oQSIyjHu6f8Ka3tiTJySkZSMa7BuH256I9tDspjTjAXVOmThBhryQtog8l2bdGUqM7DzJXZp8v73K1CNi99qYiENVsN98bZwmpdJjot0qA5mVgV7EbbUtI/wCQtML2kOiI5wROeZVjFIe67DNM4/vZbYtIjsr3UN8olzi3xAGOfRQfTAmIk9FhpflyP0RtiPGr0H067XDDQHdZ3HQhT0iRyKVUWOHdMhxADdjhjEEb9UOKfYjTXQfTuo3kJff/ABK1shgL3ew90Ld3bnCIgeeUvZbg5jbqjddBjjT3JAF/xS4r41Frf8rcA+fVcMspbmAm30+xjClFDdLTLWl0gCwty0ywkR0/dWS04zUYPE0HuMJey3jlErp1MkRPdMlROSUuw6/4/Vc2KYDSef4iPLkq7fcP1DVku3JOZ65TE0SOYOFht39jCzdixio9Fbq2Dgh6tt1arU4Efibz5KN1BpB7nnusM37RRLi1gqFxhXmrwUZ2Si54FglqO/IjrwVn5yz5qY1eEO7FB1bLTuCEyYGgCq5QqatRI2yokwEZKxaWIDHofEbnSEoYdRkrFinE7mTtdyXbGSsWIsyighlIDZEMcGgYysWJTdm2Ako2jSxKxYshZ6JdETMdP91DWOwCxYmYsezplLPbn1yunUzjpyWLEELZNp0wOe58l0XfbbbPmsWIsU4NTkB5qV8yB1OVixKO0jqBJztsunBaWLJiNEb6ZPLESt/T6gCdj/QsWIrYLo4+lHIkfysDIxqMLSxGjXZPpmC045yuTqgRz6rFiwK2F0KIiTHsudQDjHl6raxN4F7OS0RnKFqUR6rFiDAjWlwEgz5qB7zIxuM7LFi3QKTF9xuSQEO5jTj1WLFkBoW1+HMJMYS664fvIWLFugLYAbLutLFiNhP/2Q==" style="width:105%">
+  <div class="text">Oral Cancer</div>
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">5 / 5</div>
+  <img src="http://dentalhygieneconsultants.com/wp-content/uploads/2015/04/mouth-ulcer-2-300x225.jpg" style="width:90%">
+  <div class="text">Oral cancer</div>
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+
+<br>
+    <aside><img src="https://img.webmd.com/dtmcms/live/webmd/consumer_assets/site_images/articles/health_tools/signs_you_might_have_lung_cancer_slideshow/493ss_thinkstock_rf_lung_cancer_illustration.jpg" align="right" width="300" height="200"></aside>
+<u>Lung Cancer</u>
+    <p align="justify">Lung cancer, also known as lung carcinoma, is a malignant lung tumor characterized by uncontrolled cell growth in tissues of the lung.
+    The two main types are small-cell lung carcinoma and non-small-cell lung carcinoma .
+    The most common symptoms are coughing, weight loss, shortness of breath, and chest pains.
+    The vast majority (85%) of cases of lung cancer are due to long-term tobacco smoking. About 10–15% of cases occur in people who have never smoked.<br>
+    Avoidance of risk factors, including smoking and air pollution, is the primary method of prevention.
+    </p>
+
+<div></div>
+    <br><br><br>
+<br>
+
+    <aside><img src="https://www.parkwaycancercentre.com/wp-content/uploads/2013/04/stomach-img1.jpg" align="right" width="300" height="200"></aside>
+
+        <u>Stomach Cancer</u>
+    <p align="justify">Stomach cancer, also known as gastric cancer, is cancer developing from the lining of the stomach.
+       Early symptoms may include heartburn, abdominal pain, nausea and loss of appetite.
+       The most common cause is infection by the bacterium Helicobacter pylori, which accounts for more than 60% of cases.
+    About 10% of cases run in families, and between 1% and 3% of cases are due to genetic syndromes inherited from a person's parents such as hereditary diffuse gastric cancer.
+    </p>
+<dif></dif>
+<br><br><br><br><br>
+<div class="crop">
+    <aside><img src="http://dentalhygieneconsultants.com/wp-content/uploads/2015/04/mouth-ulcer-2-300x225.jpg" align="right" width="300" height="200"></aside>
+</div>
+    <u>Oral Cancer</u>
+    <p align="justify">Oral cancer, also known as mouth cancer, is a type of head and neck cancer and is any cancerous tissue growth located in the oral cavity.
+It may arise as a primary lesion originating in any of the tissues in the mouth. There are several types of oral cancers, but around 90% are those originating in the tissues that line the mouth and lips.
+        Oral or mouth cancer most commonly involves the tongue.Around 75 percent of oral cancers are linked to modifiable behaviors such as tobacco use and excessive alcohol consumption.</p>
+
+<br><br><br><br>
+<dif></dif>
+<u>Foods you may want to take:</u><br>
+1) Citrus fruits like orange, lime and those mainly containing Vitamin C.<br>
+1) Carrots, peppers and greens, broccoli, beetroot.<br>
+2) Ginger, garlic.<br>
+3) Nuts.<br>
+4) Tomatoes.<br>
+5) Fruits and Green leafy vegetables.<br>
+6) Pulses.<br>
+<br>
+
+</h>
+
+<button onclick="topFunction()" id="myBtn" title="^">^</button>
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+
+</script>
+
+</body>
+</html>

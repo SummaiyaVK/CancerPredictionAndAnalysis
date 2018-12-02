@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<head>
+    <style>
+body {
+    background-color: #b3b3ff;
+    }
+
+    h {
+    font-size: 20px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #009973;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #5c8a8a;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+    </style>
+<title>Cancer Prediction and Analysis</title>
+<script type="text/javascript">
+function display()
+{
+var age,gen,sm,ob,al,ex,here;
+var age=document.getElementById('age').value;
+if(age<=0)
+    alert("Please enter your correct age");
+
+var gench=document.getElementsByName('gender');
+var gen="";
+for(var i=0; i<gench.length; i++){
+   if(gench[i].type=='radio' && gench[i].checked==true)
+      gen+=gench[i].value;
+}
+var smch=document.getElementsByName('smoke');
+var sm="";
+for(var i=0; i<smch.length; i++){
+   if(smch[i].type=='radio' && smch[i].checked==true)
+      sm+=smch[i].value;
+}
+var obch=document.getElementsByName('obese');
+var ob="";
+for(var i=0; i<obch.length; i++){
+   if(obch[i].type=='radio' && obch[i].checked==true)
+      ob+=obch[i].value;
+}
+var alch=document.getElementsByName('alcoholic');
+var al="";
+for(var i=0; i<alch.length; i++){
+   if(alch[i].type=='radio' && alch[i].checked==true)
+      al+=alch[i].value;
+}
+var exch=document.getElementsByName('exercise');
+var ex="";
+for(var i=0; i<exch.length; i++){
+   if(exch[i].type=='radio' && exch[i].checked==true)
+      ex+=exch[i].value;
+}
+var herech=document.getElementsByName('heredity');
+var here="";
+for(var i=0; i<herech.length; i++){
+   if(herech[i].type=='radio' && herech[i].checked==true)
+      here+=herech[i].value;
+}
+/*
+if(document.getElementById('gender').checked)
+{
+   gen=document.getElementById('gender').value;
+}
+if(document.getElementById('smoke').checked)
+{
+   sm=document.getElementById('smoke').value;
+}
+if(document.getElementById('obese').checked)
+{
+   ob=document.getElementById('obese').value;
+}
+if(document.getElementById('alcoholic').checked)
+{
+   al=document.getElementById('alcoholic').value;
+}
+if(document.getElementById('exercise').checked)
+{
+   ex=document.getElementById('exercise').value;
+}
+if(document.getElementById('heredity').checked)
+{
+   here=document.getElementById('heredity').value;
+}
+*/
+
+alert(age+" "+gen+" "+sm+" "+ob+" "+al+" "+ex+" "+here);
+
+/*
+var chbox=document.getElementsByName("symp");
+var ch="";
+    for (var i=0; i<chbox.length; i++) {
+        if(chbox[i].type=='checkbox' && chbox[i].checked==true)
+      {
+         ch+=chbox[i].value+" ";
+      }
+      else if(chbox[i].type='checkbox' && chbox[i].checked==false)
+      {
+         ch+="none"+" ";
+      }
+    }
+   */
+
+var s1=document.getElementsByName('symp1');
+var symp1="";
+for(var i=0; i<s1.length; i++){
+   if(s1[i].type=='checkbox' && s1[i].checked==true)
+   {
+      symp1+=s1[i].value;
+   }
+   else if(s1[i].type=='checkbox' && s1[i].checked==false)
+   {
+      symp1="na";
+   }
+}
+alert("after 1:"+symp1);
+var s2=document.getElementsByName('symp2');
+var symp2="";
+for(var i=0; i<s2.length; i++){
+   if(s2[i].type=='checkbox' && s2[i].checked==true)
+   {
+      symp2+=s2[i].value;
+   }
+   else if(s2[i].type=='checkbox' && s2[i].checked==false)
+   {
+      symp2="none";
+   }
+}
+alert("after 2:"+symp2);
+var s3=document.getElementsByName('symp3');
+var symp3="";
+for(var i=0; i<s3.length; i++){
+   if(s3[i].type=='checkbox' && s3[i].checked==true)
+   {
+      symp3+=s3[i].value;
+   }
+   else if(s3[i].type=='checkbox' && s3[i].checked==false)
+   {
+      symp3="none";
+   }
+}
+alert("after 3:"+symp3);
+var s4=document.getElementsByName('symp4');
+var symp4="";
+for(var i=0; i<s4.length; i++){
+   if(s4[i].type=='checkbox' && s4[i].checked==true)
+   {
+      symp4+=s4[i].value;
+   }
+   else if(s4[i].type=='checkbox' && s4[i].checked==false)
+   {
+      symp4="none";
+   }
+}
+alert("after 4:"+symp4);
+var s5=document.getElementsByName('symp5');
+var symp5="";
+for(var i=0; i<s5.length; i++){
+   if(s5[i].type=='checkbox' && s5[i].checked==true)
+   {
+      symp5+=s5[i].value;
+   }
+   else if(s5[i].type=='checkbox' && s5[i].checked==false)
+   {
+      symp5="none";
+   }
+}
+alert("after 5:"+symp5);
+var s6=document.getElementsByName('symp6');
+var symp6="";
+for(var i=0; i<s6.length; i++){
+   if(s6[i].type=='checkbox' && s6[i].checked==true)
+   {
+      symp6+=s6[i].value;
+   }
+   else if(s6[i].type=='checkbox' && s6[i].checked==false)
+   {
+      symp6="none";
+   }
+}
+alert("after 6:"+symp6);
+var s7=document.getElementsByName('symp7');
+var symp7="";
+for(var i=0; i<s7.length; i++){
+   if(s7[i].type=='checkbox' && s7[i].checked==true)
+   {
+      symp7+=s7[i].value;
+   }
+   else if(s7[i].type=='checkbox' && s7[i].checked==false)
+   {
+      symp7="none";
+   }
+}
+alert("after 7:"+symp7);
+var s8=document.getElementsByName('symp8');
+var symp8="";
+for(var i=0; i<s8.length; i++){
+   if(s8[i].type=='checkbox' && s8[i].checked==true)
+   {
+      symp8+=s8[i].value;
+   }
+   else if(s8[i].type=='checkbox' && s8[i].checked==false)
+   {
+      symp8="none";
+   }
+}
+alert("after 8:"+symp8);
+var s9=document.getElementsByName('symp9');
+var symp9="";
+for(var i=0; i<s9.length; i++){
+   if(s9[i].type=='checkbox' && s9[i].checked==true)
+   {
+      symp9+=s9[i].value;
+   }
+   else if(s9[i].type=='checkbox' && s9[i].checked==false)
+   {
+      symp9="none";
+   }
+}
+alert("after 9:"+symp9);
+var s10=document.getElementsByName('symp10');
+var symp10="";
+for(var i=0; i<s10.length; i++){
+   if(s10[i].type=='checkbox' && s10[i].checked==true)
+   {
+      symp10+=s10[i].value;
+   }
+   else if(s10[i].type=='checkbox' && s10[i].checked==false)
+   {
+      symp10="none";
+   }
+}
+alert("after 10:"+symp10);
+var s11=document.getElementsByName('symp11');
+var symp11="";
+for(var i=0; i<s11.length; i++){
+   if(s11[i].type=='checkbox' && s11[i].checked==true)
+   {
+      symp11+=s11[i].value;
+   }
+   else if(s11[i].type=='checkbox' && s11[i].checked==false)
+   {
+      symp11="none";
+   }
+}
+alert("after 11:"+symp11);
+var s12=document.getElementsByName('symp12');
+var symp12="";
+for(var i=0; i<s12.length; i++){
+   if(s12[i].type=='checkbox' && s12[i].checked==true)
+   {
+      symp12+=s12[i].value;
+   }
+   else if(s12[i].type=='checkbox' && s12[i].checked==false)
+   {
+      symp12="none";
+   }
+}
+alert("after 12:"+symp12);
+var s13=document.getElementsByName('symp13');
+var symp13="";
+for(var i=0; i<s13.length; i++){
+   if(s13[i].type=='checkbox' && s13[i].checked==true)
+   {
+      symp13+=s13[i].value;
+   }
+   else if(s13[i].type=='checkbox' && s13[i].checked==false)
+   {
+      symp13="none";
+   }
+}
+alert("after 13:"+symp13);
+var s14=document.getElementsByName('symp14');
+var symp14="";
+for(var i=0; i<s14.length; i++){
+   if(s14[i].type=='checkbox' && s14[i].checked==true)
+   {
+      symp14+=s14[i].value;
+   }
+   else if(s14[i].type=='checkbox' && s14[i].checked==false)
+   {
+      symp14="none";
+   }
+}
+alert("after 14:"+symp14);
+var s15=document.getElementsByName('symp15');
+var symp15="";
+for(var i=0; i<s15.length; i++){
+   if(s15[i].type=='checkbox' && s15[i].checked==true)
+   {
+      symp15+=s15[i].value;
+   }
+   else if(s15[i].type=='checkbox' && s15[i].checked==false)
+   {
+      symp15="none";
+   }
+}
+alert("after 15:"+symp15);
+var s16=document.getElementsByName('symp16');
+var symp16="";
+for(var i=0; i<s16.length; i++){
+   if(s16[i].type=='checkbox' && s16[i].checked==true)
+   {
+      symp16+=s16[i].value;
+   }
+   else if(s16[i].type=='checkbox' && s16[i].checked==false)
+   {
+      symp16="none";
+   }
+}
+alert("after 16:"+symp16);
+var s17=document.getElementsByName('symp17');
+var symp17="";
+for(var i=0; i<s17.length; i++){
+   if(s17[i].type=='checkbox' && s17[i].checked==true)
+   {
+      symp17+=s17[i].value;
+   }
+   else if(s17[i].type=='checkbox' && s17[i].checked==false)
+   {
+      symp17="none";
+   }
+}
+alert("after 17:"+symp17);
+var s18=document.getElementsByName('symp18');
+var symp18="";
+for(var i=0; i<s18.length; i++){
+   if(s18[i].type=='checkbox' && s18[i].checked==true)
+   {
+      symp18+=s18[i].value;
+   }
+   else if(s18[i].type=='checkbox' && s18[i].checked==false)
+   {
+      symp18="none";
+   }
+}
+alert("after 18:"+symp18);
+var s19=document.getElementsByName('symp19');
+var symp19="";
+for(var i=0; i<s19.length; i++){
+   if(s19[i].type=='checkbox' && s19[i].checked==true)
+   {
+      symp19+=s19[i].value;
+   }
+   else if(s19[i].type=='checkbox' && s19[i].checked==false)
+   {
+      symp19="none";
+   }
+}
+alert("after 19:"+symp19);
+var s20=document.getElementsByName('symp20');
+var symp20="";
+for(var i=0; i<s20.length; i++){
+   if(s20[i].type=='checkbox' && s20[i].checked==true)
+   {
+      symp20+=s20[i].value;
+   }
+   else if(s20[i].type=='checkbox' && s20[i].checked==false)
+   {
+      symp20="none";
+   }
+}
+alert("after 20:"+symp20);
+var s21=document.getElementsByName('symp21');
+var symp21="";
+for(var i=0; i<s21.length; i++){
+   if(s21[i].type=='checkbox' && s21[i].checked==true)
+   {
+      symp21+=s21[i].value;
+   }
+   else if(s21[i].type=='checkbox' && s21[i].checked==false)
+   {
+      symp21="none";
+   }
+}
+alert("after 21:"+symp21);
+var s22=document.getElementsByName('symp22');
+var symp22="";
+for(var i=0; i<s22.length; i++){
+   if(s22[i].type=='checkbox' && s22[i].checked==true)
+   {
+      symp22+=s22[i].value;
+   }
+   else if(s22[i].type=='checkbox' && s22[i].checked==false)
+   {
+      symp22="none";
+   }
+}
+alert("after 22:"+symp22);
+
+alert(symp1+" "+symp2+" "+symp3+" "+symp22);
+}
+</script>
+<body>
+<br>
+<ul>
+<li><a href="{{ url_for('mainpg') }}">Home</a></li>
+<li><a href="index">About</a></li>
+<li><a class="active" href="cp">Take a test!</a></li>
+</ul>
+<h>
+    <br>
+Just answer these few questions... It won't take long.<br>
+    <br>
+General Questions:<br>
+
+<form name="form" action="http://localhost:5000/level1eval" method="get" novalidate>
+<br>Your Age:<input type="text" id="age" name="age" autofocus required><br>
+<br>Gender-<br>
+<input type="radio" id="gender" name="gender" value="0" checked>Male<br>
+<input type="radio" id="gender" name="gender" value="1">Female<br>
+<br>Do you smoke?<br>
+<input type="radio" id="smoke" name="smoke" value="1" checked>Yes<br>
+<input type="radio" id="smoke" name="smoke" value="0">No<br>
+<br>Are you obese?<br>
+<input type="radio" id="obese" name="obese" value="1" checked>Yes<br>
+<input type="radio" id="obese" name="obese" value="0">No<br>
+<br>Are you alcoholic?<br>
+<input type="radio" id="alcoholic" name="alcoholic" value="1" checked>Yes<br>
+<input type="radio" id="alcoholic" name="alcoholic" value="0">No<br>
+<br>Do you exercise?<br>
+<input type="radio" id="exercise" name="exercise" value="1" checked>Yes<br>
+<input type="radio" id="exercise" name="exercise" value="0">No<br>
+<br>Does anyone in your family have cancer?<br>
+<input type="radio" id="heredity" name="heredity" value="1" checked>Yes<br>
+<input type="radio" id="heredity" name="heredity" value="0">No<br>
+<br>
+<br>
+Please select all the symptoms you experience...<br><br>
+<input type="checkbox" name="symp1" id="symp1" value="dwl">Drastic weight loss<br>
+<input type="checkbox" name="symp2" id="symp2" value="fatigue">Fatigue<br>
+<input type="checkbox" name="symp3" id="symp3" value="fever">Fever<br>
+<input type="checkbox" name="symp4" id="symp4" value="pain">Pain<br>
+<input type="checkbox" name="symp5" id="symp5" value="persistentvomiting">Persistent vomiting<br>
+<input type="checkbox" name="symp6" id="symp6" value="indigestion">Indigestion<br>
+<input type="checkbox" name="symp7" id="symp7" value="abdomenpain">Abdomen pain<br>
+<input type="checkbox" name="symp8" id="symp8" value="bloating">Bloating<br>
+<input type="checkbox" name="symp9" id="symp9" value="persistentheartburn">Persistent heart burn<br>
+<input type="checkbox" name="symp10" id="symp10" value="difficultywhileswallowing">Difficulty while swallowing<br>
+<input type="checkbox" name="symp11" id="symp11" value="difficultyinbreathing">Difficulty in breathing<br>
+<input type="checkbox" name="symp12" id="symp12" value="lossofappetite">Loss of appetite<br>
+<input type="checkbox" name="symp13" id="symp13" value="recurringchestinfection">Recurring chest infection<br>
+<input type="checkbox" name="symp14" id="symp14" value="bloodincough">Blood in cough<br>
+<input type="checkbox" name="symp15" id="symp15" value="colourchangeinsputum">Colour change in sputum<br>
+<input type="checkbox" name="symp16" id="symp16" value="persistentcough">Persistent cough<br>
+<input type="checkbox" name="symp17" id="symp17" value="mouthulcer">Mouth ulcer<br>
+<input type="checkbox" name="symp18" id="symp18" value="painwhileswallowing">Pain while swallowing<br>
+<input type="checkbox" name="symp19" id="symp19" value="patchesinmouth">Patches in mouth<br>
+<input type="checkbox" name="symp20" id="symp20" value="swellinginmouth">Swelling in mouth<br>
+<input type="checkbox" name="symp21" id="symp21" value="hoarseness">Hoarseness<br>
+<input type="checkbox" name="symp22" id="symp22" value="jawpain">Jaw pain<br><br>
+<input type="checkbox" name="no" id="no" value="none">None<br>
+<input type="submit" value="Submit"><br>
+</form>
+</h>
+<br>
+<button onclick="topFunction()" id="myBtn" title="^">^</button>
+<script>
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if (document.body.scrollTop > 40 || document.documentElement.scrollTop > 40) {
+        document.getElementById("myBtn").style.display = "block";
+    } else {
+        document.getElementById("myBtn").style.display = "none";
+    }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+</script>
+
+<!--<input type="submit" onsubmit="<% render_template('cplung.html', name='Joe') %>">-->
+
+<!--<p><a href="{{ url_for('cplung') }}">Check out this cool form!</a></p>-->
+
+<!--{{result3}}-->
+
+<script>
+
+
+</script>
+</body>
+</html>

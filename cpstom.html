@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+    <style>
+body {
+    background-color: #b3b3ff;
+    }
+
+h {
+    font-size: 20px;
+}
+
+d {
+position: fixed;
+padding-top: 250px;
+}
+
+    </style>
+<title>Cancer Prediction and Analysis</title>
+<script type="text/javascript">
+function displays()
+{
+var schbox=document.getElementsByName("symps");
+var sch="";
+    for (var i=0; i<schbox.length; i++) {
+        if(schbox[i].type=='checkbox' && schbox[i].checked==true)
+		{
+			sch+=schbox[i].value+" ";
+		}
+    }
+//alert(sch);
+}
+</script>
+</head>
+<body>
+<br>
+<h>
+Please check the boxes according to your symptoms.
+<br>
+
+<form action="http://localhost:5000/cpstomeval" method="get"><br>
+<input type="checkbox" name="symps1" id="symps1" value="jaundice">Jaundice<br>
+<input type="checkbox" name="symps2" id="symps2" value="bloodstools">Blood stools<br>
+<input type="checkbox" name="symps3" id="symps3" value="appetiteloss">Appetite loss<br>
+<input type="checkbox" name="symps4" id="symps4" value="stomachulcer">Stomach ulcer<br><br>
+<input type="submit" value="Submit" onclick="displays()"><br>
+</form>
+    <br>
+
+    <d><a href="mainpg">Back to main page!</a></d>
+
+</h>
+<br>
+
+
+<!--{{result1}}
+
+
+<p><a href="{{ url_for('cporal') }}">Check out this cool form!</a></p>-->
+
+
+</body>
+</html>

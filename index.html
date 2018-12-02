@@ -1,0 +1,79 @@
+<!doctype html>
+<head>
+    <style>
+        body {
+    background-color: #b3b3ff;
+    }
+
+    h {
+    font-size: 20px;
+    }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: #009973;
+}
+
+footer{
+    text-align: center;
+    color: blue;
+    padding-top: 60px;
+
+    }
+    marquee {
+    color: #e60000;
+    }
+
+    </style>
+<html>
+<body>
+
+
+<ul>
+<li><a href="{{ url_for('mainpg') }}">Home</a></li>
+<li><a class="active" href="index">About</a></li>
+<li><a href="cp">Take a test!</a></li>
+</ul>
+<h>
+    <br>
+<hh style="font-size: 25px">About Us!</hh><br><br>
+This tool helps you to know about lung, oral and stomach cancers and you can also take a test to check your doubts and status.<br>
+
+You can check out the main page for more information about the cancers and food suggested to prevent cancer to an extent and stay healthy.<br>
+    <br>
+It can be quite a useful tool for the doctors!
+
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br><br><br>
+    <br><br>
+
+    <marquee>You need to consult a doctor after taking the tests  suggested...</marquee>
+    <d><footer><u>Copyright &copy; Aishwarya Sitharam, Radhika Sharma & Summaiya Sarvari V K</u></footer></d>
+
+</h>
+</body>
+</html>
